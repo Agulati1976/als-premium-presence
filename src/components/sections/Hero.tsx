@@ -98,7 +98,7 @@ export function Hero() {
             <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="block">
               <span className="text-gradient">& IT</span> Solutions
             </motion.span>
-            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }} className="block text-foreground/90 text-2xl sm:text-3xl lg:text-4xl mt-3 font-bold">
+            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }} className="block">
               in India
             </motion.span>
           </h1>

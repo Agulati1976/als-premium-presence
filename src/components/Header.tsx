@@ -30,12 +30,12 @@ export function Header() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass-strong py-1.5" : "bg-transparent py-2.5"
+        scrolled ? "glass-strong py-0.5" : "bg-transparent py-1"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
-          <Logo className="h-28 w-auto transition-transform group-hover:scale-105" />
+          <Logo className="h-20 w-auto transition-transform group-hover:scale-105" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">

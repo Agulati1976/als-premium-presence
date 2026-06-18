@@ -27,21 +27,39 @@ export function Hero() {
         <motion.img
           src={heroBg}
           alt=""
-          className="size-full object-cover opacity-40"
+          className="size-full object-cover opacity-85 saturate-150 contrast-125 brightness-110"
           style={{ y: bgY, scale: bgScale }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(199,240,0,0.08),_transparent_70%)]" />
-        <div className="absolute inset-0 grid-bg opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/45 to-background/10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_76%_34%,_rgba(199,240,0,0.24),_transparent_42%)]" />
+        <div className="absolute inset-0 grid-bg opacity-25" />
         {/* Animated gradient mesh */}
         <motion.div
-          className="absolute inset-0 opacity-50 animate-gradient-x"
+          className="absolute inset-0 opacity-35 animate-gradient-x"
           style={{
             background:
-              "radial-gradient(circle at 20% 30%, rgba(199,240,0,0.14), transparent 35%), radial-gradient(circle at 80% 20%, rgba(168,214,0,0.10), transparent 40%), radial-gradient(circle at 60% 80%, rgba(199,240,0,0.08), transparent 35%)",
+              "radial-gradient(circle at 20% 30%, rgba(199,240,0,0.12), transparent 35%), radial-gradient(circle at 82% 30%, rgba(168,214,0,0.28), transparent 36%), radial-gradient(circle at 64% 82%, rgba(199,240,0,0.14), transparent 35%)",
           }}
         />
       </div>
+
+      <motion.div
+        aria-hidden="true"
+        className="absolute right-0 top-24 bottom-0 w-[58%] -z-10 hidden md:block overflow-hidden"
+        initial={{ opacity: 0, x: 60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+      >
+        <motion.img
+          src={heroBg}
+          alt=""
+          className="size-full object-cover opacity-60 mix-blend-screen saturate-150 contrast-125"
+          style={{ y: bgY, scale: bgScale }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/25 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
+      </motion.div>
 
       {/* Floating particles */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">

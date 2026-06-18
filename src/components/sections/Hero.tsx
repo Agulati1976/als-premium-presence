@@ -12,19 +12,33 @@ const stats = [
 ];
 
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-28">
-      {/* BG image with mesh */}
-      <div className="absolute inset-0 -z-10">
-        <img src={heroBg} alt="" className="size-full object-cover opacity-50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/75 to-background" />
-        <div className="absolute inset-0 grid-bg opacity-50" />
+    <section ref={sectionRef} id="home" className="relative min-h-screen flex items-center overflow-hidden pt-28">
+      {/* BG image with Ken Burns + parallax */}
+      <div className="absolute inset-0 -z-20">
+        <motion.img
+          src={heroBg}
+          alt=""
+          className="size-full object-cover"
+          style={{ y: bgY, scale: bgScale, opacity: 0.12 }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(199,240,0,0.08),_transparent_70%)]" />
+        <div className="absolute inset-0 grid-bg opacity-40" />
         {/* Animated gradient mesh */}
-        <div
-          className="absolute inset-0 opacity-60 animate-gradient-x"
+        <motion.div
+          className="absolute inset-0 opacity-50 animate-gradient-x"
           style={{
             background:
-              "radial-gradient(circle at 20% 30%, rgba(199,240,0,0.18), transparent 35%), radial-gradient(circle at 80% 20%, rgba(168,214,0,0.15), transparent 40%), radial-gradient(circle at 60% 80%, rgba(199,240,0,0.12), transparent 35%)",
+              "radial-gradient(circle at 20% 30%, rgba(199,240,0,0.14), transparent 35%), radial-gradient(circle at 80% 20%, rgba(168,214,0,0.10), transparent 40%), radial-gradient(circle at 60% 80%, rgba(199,240,0,0.08), transparent 35%)",
           }}
         />
       </div>

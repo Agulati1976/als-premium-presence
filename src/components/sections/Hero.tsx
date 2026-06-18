@@ -44,24 +44,6 @@ export function Hero() {
         />
       </div>
 
-      <motion.div
-        aria-hidden="true"
-        className="absolute right-0 top-24 bottom-0 w-[58%] z-[1] hidden md:block overflow-hidden pointer-events-none"
-        initial={{ opacity: 0, x: 60 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-      >
-        <motion.img
-          src={heroBg}
-          alt=""
-          className="size-full object-cover opacity-60 mix-blend-screen saturate-150 contrast-125"
-          style={{ y: bgY, scale: bgScale }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/25 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
-      </motion.div>
-
-      {/* Floating particles */}
       <div className="absolute inset-0 z-[2] overflow-hidden pointer-events-none">
         {[...Array(24)].map((_, i) => (
           <motion.span

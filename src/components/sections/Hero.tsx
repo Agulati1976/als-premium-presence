@@ -27,10 +27,10 @@ export function Hero() {
         <motion.img
           src={heroBg}
           alt=""
-          className="size-full object-cover"
-          style={{ y: bgY, scale: bgScale, opacity: 0.12 }}
+          className="size-full object-cover opacity-40"
+          style={{ y: bgY, scale: bgScale }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(199,240,0,0.08),_transparent_70%)]" />
         <div className="absolute inset-0 grid-bg opacity-40" />
         {/* Animated gradient mesh */}

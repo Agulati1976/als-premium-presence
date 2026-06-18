@@ -1,50 +1,58 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, ShieldCheck, Award } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import { Counter } from "../Counter";
 
 const stats = [
-  { value: 100, suffix: "+", label: "Projects" },
-  { value: 50, suffix: "+", label: "Clients" },
-  { value: 10, suffix: "+", label: "Industries" },
-  { value: 24, suffix: "/7", label: "Support" },
+  { value: 100, suffix: "+", label: "Projects Delivered" },
+  { value: 50, suffix: "+", label: "Enterprise Clients" },
+  { value: 10, suffix: "+", label: "Industries Served" },
+  { value: 24, suffix: "/7", label: "Global Support" },
 ];
 
 export function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-24">
-      {/* BG image */}
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-28">
+      {/* BG image with mesh */}
       <div className="absolute inset-0 -z-10">
-        <img src={heroBg} alt="" className="size-full object-cover opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background" />
-        <div className="absolute inset-0 grid-bg opacity-40" />
+        <img src={heroBg} alt="" className="size-full object-cover opacity-50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/75 to-background" />
+        <div className="absolute inset-0 grid-bg opacity-50" />
+        {/* Animated gradient mesh */}
+        <div
+          className="absolute inset-0 opacity-60 animate-gradient-x"
+          style={{
+            background:
+              "radial-gradient(circle at 20% 30%, rgba(199,240,0,0.18), transparent 35%), radial-gradient(circle at 80% 20%, rgba(168,214,0,0.15), transparent 40%), radial-gradient(circle at 60% 80%, rgba(199,240,0,0.12), transparent 35%)",
+          }}
+        />
       </div>
 
       {/* Floating particles */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-        {[...Array(18)].map((_, i) => (
+        {[...Array(24)].map((_, i) => (
           <motion.span
             key={i}
-            className="absolute size-1.5 rounded-full bg-primary/60"
-            style={{ left: `${(i * 53) % 100}%`, top: `${(i * 37) % 100}%` }}
-            animate={{
-              y: [0, -40, 0],
-              opacity: [0.2, 0.8, 0.2],
+            className="absolute rounded-full bg-primary"
+            style={{
+              left: `${(i * 53) % 100}%`,
+              top: `${(i * 37) % 100}%`,
+              width: `${(i % 3) + 2}px`,
+              height: `${(i % 3) + 2}px`,
+              opacity: 0.4,
+              boxShadow: "0 0 12px rgba(199,240,0,0.8)",
             }}
-            transition={{
-              duration: 4 + (i % 5),
-              repeat: Infinity,
-              delay: i * 0.3,
-            }}
+            animate={{ y: [0, -60, 0], opacity: [0.2, 0.9, 0.2] }}
+            transition={{ duration: 4 + (i % 5), repeat: Infinity, delay: i * 0.2 }}
           />
         ))}
       </div>
 
       {/* Glow orbs */}
-      <div className="absolute top-1/4 -left-32 size-[480px] rounded-full bg-primary/15 blur-[120px] -z-10" />
-      <div className="absolute bottom-0 right-0 size-[420px] rounded-full bg-primary-glow/10 blur-[120px] -z-10" />
+      <div className="absolute top-1/4 -left-40 size-[520px] rounded-full bg-primary/20 blur-[140px] -z-10 animate-pulse-glow" />
+      <div className="absolute bottom-0 right-0 size-[480px] rounded-full bg-primary-glow/15 blur-[140px] -z-10" />
 
-      <div className="container mx-auto px-6 py-20 grid lg:grid-cols-12 gap-12 items-center">
+      <div className="container mx-auto px-6 py-20 grid lg:grid-cols-12 gap-12 items-center relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -55,38 +63,69 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 mb-6 text-xs font-medium text-primary"
+            className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 mb-6 text-xs font-medium"
           >
-            <Sparkles className="size-3.5" />
-            India's Trusted Business Solutions Partner
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex size-full rounded-full bg-primary opacity-75" style={{ animation: "ping-ring 2s cubic-bezier(0,0,0.2,1) infinite" }} />
+              <span className="relative inline-flex size-2 rounded-full bg-primary" />
+            </span>
+            <Sparkles className="size-3.5 text-primary" />
+            <span className="text-foreground/80">India's Trusted Business Solutions Partner</span>
           </motion.div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight">
-            Leading{" "}
-            <span className="text-gradient">Real Estate, BPO & IT</span>{" "}
-            Solutions Company in India
+          <h1 className="text-[2.5rem] sm:text-5xl lg:text-7xl xl:text-[5.5rem] font-extrabold leading-[0.98] tracking-[-0.03em]">
+            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="block">
+              Leading
+            </motion.span>
+            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} className="block">
+              <span className="text-gradient">Real Estate, BPO</span>
+            </motion.span>
+            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="block">
+              <span className="text-gradient">& IT</span> Solutions
+            </motion.span>
+            <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }} className="block text-foreground/90 text-2xl sm:text-3xl lg:text-4xl mt-3 font-bold">
+              in India
+            </motion.span>
           </h1>
 
-          <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
+          <motion.p
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }}
+            className="mt-7 text-base lg:text-lg text-muted-foreground max-w-2xl leading-relaxed"
+          >
             Delivering excellence in Building Installation, Call Centre Operations, Outsourcing
             Services, Software Development and Digital Transformation.
-          </p>
+          </motion.p>
 
-          <div className="mt-10 flex flex-wrap gap-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.85 }}
+            className="mt-10 flex flex-wrap gap-4"
+          >
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground hover:shadow-[0_0_40px_rgba(199,240,0,0.5)] transition-all hover:-translate-y-0.5"
+              className="group relative inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-bold text-primary-foreground transition-all hover:-translate-y-1 hover:shadow-[0_20px_60px_-10px_rgba(199,240,0,0.6)] overflow-hidden"
             >
-              Request Consultation
-              <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700" />
+              <span className="relative">Request Consultation</span>
+              <ArrowRight className="size-4 relative group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="#services"
-              className="inline-flex items-center gap-2 rounded-full glass px-7 py-3.5 font-semibold hover:border-primary/40 transition-all"
+              className="group inline-flex items-center gap-2 rounded-full glass px-8 py-4 font-semibold hover:border-primary/50 hover:text-primary transition-all"
             >
               Explore Services
+              <span className="size-1.5 rounded-full bg-primary group-hover:scale-150 transition-transform" />
             </a>
-          </div>
+          </motion.div>
+
+          {/* Trust badges */}
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}
+            className="mt-10 flex flex-wrap items-center gap-6 text-xs text-muted-foreground"
+          >
+            <div className="flex items-center gap-2"><ShieldCheck className="size-4 text-primary" /> ISO 9001:2015</div>
+            <div className="flex items-center gap-2"><Award className="size-4 text-primary" /> 15+ Years</div>
+            <div className="flex items-center gap-2"><Sparkles className="size-4 text-primary" /> Pan-India Presence</div>
+          </motion.div>
         </motion.div>
 
         <motion.div
@@ -98,19 +137,42 @@ export function Hero() {
           {stats.map((s, i) => (
             <motion.div
               key={s.label}
-              whileHover={{ y: -6 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
               className="glass rounded-2xl p-6 relative overflow-hidden group"
               style={{ animationDelay: `${i * 0.1}s` }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="text-4xl font-extrabold text-gradient">
-                <Counter to={s.value} suffix={s.suffix} />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute -top-10 -right-10 size-24 rounded-full bg-primary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative">
+                <div className="text-4xl lg:text-5xl font-extrabold text-gradient">
+                  <Counter to={s.value} suffix={s.suffix} />
+                </div>
+                <div className="mt-2 text-sm text-muted-foreground">{s.label}</div>
               </div>
-              <div className="mt-2 text-sm text-muted-foreground">{s.label}</div>
             </motion.div>
           ))}
+          {/* Decorative ring */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+            className="absolute -top-10 -right-10 size-40 rounded-full border border-primary/20 hidden lg:block pointer-events-none"
+          >
+            <div className="absolute -top-1 left-1/2 -translate-x-1/2 size-2 rounded-full bg-primary shadow-[0_0_20px_#C7F000]" />
+          </motion.div>
         </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 8, 0] }}
+        transition={{ opacity: { delay: 1.5 }, y: { duration: 2, repeat: Infinity } }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs text-muted-foreground"
+      >
+        <span className="tracking-[0.3em] uppercase">Scroll</span>
+        <div className="w-px h-10 bg-gradient-to-b from-primary to-transparent" />
+      </motion.div>
     </section>
   );
 }

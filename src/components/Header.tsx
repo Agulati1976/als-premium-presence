@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { NavLink, Link } from "react-router-dom";
 import { Logo } from "./Logo";
 
 const navItems = [
-  { label: "Home", to: "/" as const },
-  { label: "About Us", to: "/about" as const },
-  { label: "Services", to: "/services" as const },
-  { label: "Industries", to: "/industries" as const },
-  { label: "Why Us", to: "/why-us" as const },
-  { label: "Contact", to: "/contact" as const },
+  { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
+  { label: "Services", to: "/services" },
+  { label: "Industries", to: "/industries" },
+  { label: "Why Us", to: "/why-us" },
+  { label: "Contact", to: "/contact" },
 ];
 
 export function Header() {
@@ -40,15 +40,18 @@ export function Header() {
 
         <nav className="hidden lg:flex items-center gap-1">
           {navItems.map((item) => (
-            <Link
+            <NavLink
               key={item.label}
               to={item.to}
-              activeOptions={{ exact: true }}
-              activeProps={{ className: "text-primary" }}
-              className="relative px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors after:absolute after:bottom-1 after:left-4 after:right-4 after:h-px after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left"
+              end
+              className={({ isActive }) =>
+                `relative px-4 py-2 text-sm font-medium transition-colors after:absolute after:bottom-1 after:left-4 after:right-4 after:h-px after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left ${
+                  isActive ? "text-primary" : "text-foreground/80 hover:text-primary"
+                }`
+              }
             >
               {item.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 
@@ -79,15 +82,19 @@ export function Header() {
           >
             <div className="flex flex-col p-4">
               {navItems.map((item) => (
-                <Link
+                <NavLink
                   key={item.label}
                   to={item.to}
+                  end
                   onClick={() => setOpen(false)}
-                  activeProps={{ className: "text-primary" }}
-                  className="px-4 py-3 text-sm font-medium hover:text-primary hover:bg-white/5 rounded-lg"
+                  className={({ isActive }) =>
+                    `px-4 py-3 text-sm font-medium rounded-lg hover:bg-white/5 ${
+                      isActive ? "text-primary" : "hover:text-primary"
+                    }`
+                  }
                 >
                   {item.label}
-                </Link>
+                </NavLink>
               ))}
             </div>
           </motion.div>

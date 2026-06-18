@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ChevronRight, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-premium.jpg";
 

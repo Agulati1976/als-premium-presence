@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Industries", href: "#industries" },
-  { label: "Why Us", href: "#why" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", to: "/" as const },
+  { label: "About Us", to: "/about" as const },
+  { label: "Services", to: "/services" as const },
+  { label: "Industries", to: "/industries" as const },
+  { label: "Why Us", to: "/why-us" as const },
+  { label: "Contact", to: "/contact" as const },
 ];
 
 export function Header() {
@@ -33,29 +34,31 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group">
           <Logo className="h-11 w-auto transition-transform group-hover:scale-105" />
-        </a>
+        </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.label}
-              href={item.href}
+              to={item.to}
+              activeOptions={{ exact: true }}
+              activeProps={{ className: "text-primary" }}
               className="relative px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors after:absolute after:bottom-1 after:left-4 after:right-4 after:h-px after:bg-primary after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             className="hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold bg-primary text-primary-foreground hover:shadow-[0_0_30px_rgba(199,240,0,0.5)] transition-all hover:-translate-y-0.5"
           >
             Get Consultation
-          </a>
+          </Link>
           <button
             onClick={() => setOpen(!open)}
             className="lg:hidden p-2 rounded-md hover:bg-white/5"
@@ -76,14 +79,15 @@ export function Header() {
           >
             <div className="flex flex-col p-4">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
+                  to={item.to}
                   onClick={() => setOpen(false)}
+                  activeProps={{ className: "text-primary" }}
                   className="px-4 py-3 text-sm font-medium hover:text-primary hover:bg-white/5 rounded-lg"
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </div>
           </motion.div>

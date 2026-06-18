@@ -85,16 +85,14 @@
 }
 
 @utility glass {
-  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+  backdrop-filter: blur(20px) saturate(140%);
   border: 1px solid rgba(255,255,255,0.08);
 }
 
 @utility glass-strong {
-  background: rgba(10,10,10,0.6);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(10,10,10,0.55);
+  backdrop-filter: blur(28px) saturate(160%);
   border: 1px solid rgba(255,255,255,0.1);
 }
 
@@ -105,14 +103,6 @@
   color: transparent;
 }
 
-@utility glow-hover {
-  transition: var(--transition-smooth);
-  &:hover {
-    box-shadow: var(--shadow-glow);
-    transform: translateY(-4px);
-  }
-}
-
 @utility grid-bg {
   background-image:
     linear-gradient(rgba(199,240,0,0.06) 1px, transparent 1px),
@@ -120,17 +110,71 @@
   background-size: 64px 64px;
 }
 
+@utility noise {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@utility shimmer-border {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(from var(--angle, 0deg), transparent 0%, #C7F000 25%, transparent 50%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: spin 4s linear infinite;
+    pointer-events: none;
+  }
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  to { --angle: 360deg; }
+}
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-12px); }
 }
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 20px rgba(199, 240, 0, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(199, 240, 0, 0.6); }
+  50% { box-shadow: 0 0 50px rgba(199, 240, 0, 0.7); }
 }
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes ping-ring {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 @utility animate-float { animation: float 6s ease-in-out infinite; }
-@utility animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+@utility animate-pulse-glow { animation: pulse-glow 2.8s ease-in-out infinite; }
+@utility animate-marquee { animation: marquee 40s linear infinite; }
+@utility animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 6s ease infinite;
+}
+

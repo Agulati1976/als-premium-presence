@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Target, Eye, CheckCircle2, TrendingUp } from "lucide-react";
-import aboutImg from "@/assets/about.jpg";
+import aboutImg from "@/assets/about.webp";
 
 const highlights = [
   "Pan-India operations",

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronRight, Sparkles } from "lucide-react";
-import heroBg from "@/assets/hero-premium.jpg";
+import heroBg from "@/assets/hero-premium.webp";
 
 interface PageHeroProps {
   eyebrow?: string;

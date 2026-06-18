@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Sparkles, ShieldCheck, Award } from "lucide-react";
-import heroBg from "@/assets/hero-premium.jpg";
+import heroBg from "@/assets/hero-premium.webp";
 import { Counter } from "../Counter";
 import { useRef } from "react";
 
@@ -44,8 +44,8 @@ export function Hero() {
         />
       </div>
 
-      <div className="absolute inset-0 z-[2] overflow-hidden pointer-events-none">
-        {[...Array(24)].map((_, i) => (
+      <div className="absolute inset-0 z-[2] overflow-hidden pointer-events-none hidden md:block">
+        {[...Array(12)].map((_, i) => (
           <motion.span
             key={i}
             className="absolute rounded-full bg-primary"

@@ -21,9 +21,9 @@ export function Hero() {
   const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
 
   return (
-    <section ref={sectionRef} id="home" className="relative min-h-screen flex items-center overflow-hidden pt-28">
+    <section ref={sectionRef} id="home" className="relative isolate min-h-screen flex items-center overflow-hidden pt-28">
       {/* BG image with Ken Burns + parallax */}
-      <div className="absolute inset-0 -z-20">
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <motion.img
           src={heroBg}
           alt=""
@@ -46,7 +46,7 @@ export function Hero() {
 
       <motion.div
         aria-hidden="true"
-        className="absolute right-0 top-24 bottom-0 w-[58%] -z-10 hidden md:block overflow-hidden"
+        className="absolute right-0 top-24 bottom-0 w-[58%] z-[1] hidden md:block overflow-hidden pointer-events-none"
         initial={{ opacity: 0, x: 60 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
@@ -62,7 +62,7 @@ export function Hero() {
       </motion.div>
 
       {/* Floating particles */}
-      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 z-[2] overflow-hidden pointer-events-none">
         {[...Array(24)].map((_, i) => (
           <motion.span
             key={i}
@@ -82,10 +82,10 @@ export function Hero() {
       </div>
 
       {/* Glow orbs */}
-      <div className="absolute top-1/4 -left-40 size-[520px] rounded-full bg-primary/20 blur-[140px] -z-10 animate-pulse-glow" />
-      <div className="absolute bottom-0 right-0 size-[480px] rounded-full bg-primary-glow/15 blur-[140px] -z-10" />
+      <div className="absolute top-1/4 -left-40 size-[520px] rounded-full bg-primary/20 blur-[140px] z-[2] animate-pulse-glow pointer-events-none" />
+      <div className="absolute bottom-0 right-0 size-[480px] rounded-full bg-primary-glow/15 blur-[140px] z-[2] pointer-events-none" />
 
-      <div className="container mx-auto px-6 py-20 grid lg:grid-cols-12 gap-12 items-center relative">
+      <div className="container mx-auto px-6 py-20 grid lg:grid-cols-12 gap-12 items-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

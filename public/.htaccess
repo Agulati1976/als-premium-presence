@@ -1,25 +1,13 @@
-# cPanel / Apache configuration for Asset Light Solutions International
-# Place the contents of dist/client/ (including this file) into public_html/
+# cPanel / Apache configuration for Asset Light Solutions International SPA
+# Upload the contents of dist/ (including this file) into public_html/
 
-# Enable URL rewriting
 RewriteEngine On
 
 # Force HTTPS (uncomment after SSL is installed)
 # RewriteCond %{HTTPS} off
 # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Serve prerendered HTML for clean URLs (e.g. /about -> /about.html or /about/index.html)
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.*)$ $1.html [L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}/index.html -f
-RewriteRule ^(.*)$ $1/index.html [L]
-
-# SPA fallback — if no static file matches, serve the homepage (handles unknown routes via client router)
+# SPA fallback — serve index.html for any path that isn't a real file/dir
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ /index.html [L]
@@ -39,5 +27,4 @@ RewriteRule ^ /index.html [L]
   AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json application/xml image/svg+xml
 </IfModule>
 
-# Custom error page (optional — TanStack 404 page also exists)
 ErrorDocument 404 /index.html

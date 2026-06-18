@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-import { Counter } from "./Counter";
+import { Counter } from "../Counter";
 
 const stats = [
   { value: 100, suffix: "+", label: "Projects" },

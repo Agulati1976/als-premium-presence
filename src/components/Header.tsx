@@ -35,7 +35,7 @@ export function Header() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 group">
-          <Logo className="h-28 w-auto transition-transform group-hover:scale-105" />
+          <Logo className="h-20 w-auto transition-transform group-hover:scale-105" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">

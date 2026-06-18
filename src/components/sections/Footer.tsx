@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { Logo } from "../Logo";
 
 const SocialIcon = ({ d }: { d: string }) => (
@@ -10,58 +11,81 @@ const socials = [
   { label: "LinkedIn", d: "M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.3 18.3v-7.6H5.7v7.6h2.6zM7 9.4a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm11.3 8.9v-4.2c0-2.3-1.2-3.3-2.9-3.3-1.3 0-1.9.7-2.3 1.2v-1H10.5c0 .8 0 7.6 0 7.6h2.6v-4.2c0-.2 0-.4.1-.6.2-.4.6-.9 1.3-.9 1 0 1.3.7 1.3 1.8v4h2.5z" },
 ];
 
-
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/10 pt-16 pb-8">
-      <div className="container mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-        <div>
-          <Logo className="h-14 w-auto" />
-          <p className="mt-5 text-sm text-muted-foreground leading-relaxed">
-            Diversified business solutions across Real Estate, BPO, IT and Digital Transformation.
-          </p>
-          <div className="mt-5 flex gap-3">
-            {socials.map((s) => (
-              <a
-                key={s.label}
-                href="#"
-                aria-label={s.label}
-                className="size-9 rounded-full glass flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover:-translate-y-1"
-              >
-                <SocialIcon d={s.d} />
-              </a>
-            ))}
-          </div>
-        </div>
+    <footer className="relative border-t border-white/10 pt-20 pb-8 overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 size-[500px] rounded-full bg-primary/8 blur-[140px] -z-10" />
 
-        <FooterCol title="Quick Links" items={["Home", "About Us", "Services", "Industries", "Why Choose Us", "Contact"]} />
-        <FooterCol title="Services" items={["Real Estate", "BPO Services", "Call Centre", "Software Development", "Digital Marketing", "IT Services"]} />
-
-        <div>
-          <h4 className="font-bold mb-5">Contact Info</h4>
-          <ul className="space-y-3 text-sm text-muted-foreground">
-            <li>New Delhi, India</li>
-            <li><a href="tel:+919876543210" className="hover:text-primary">+91 98765 43210</a></li>
-            <li><a href="mailto:contact@assetlightsolutions.com" className="hover:text-primary break-all">contact@assetlightsolutions.com</a></li>
-          </ul>
+      {/* Giant wordmark watermark */}
+      <div className="absolute inset-x-0 bottom-0 flex justify-center overflow-hidden pointer-events-none">
+        <div className="text-[18vw] lg:text-[14rem] font-extrabold leading-none tracking-tighter bg-gradient-to-b from-white/[0.04] to-transparent bg-clip-text text-transparent select-none">
+          ALS
         </div>
       </div>
 
-      <div className="container mx-auto px-6 mt-14 pt-6 border-t border-white/10 text-center text-xs text-muted-foreground">
-        © 2026 Asset Light Solutions International. All Rights Reserved.
+      <div className="container mx-auto px-6 relative">
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+          <div className="lg:col-span-4">
+            <Logo className="h-14 w-auto" />
+            <p className="mt-5 text-sm text-muted-foreground leading-relaxed max-w-sm">
+              Diversified business solutions across Real Estate, BPO, IT and Digital Transformation — built for enterprise trust.
+            </p>
+            <div className="mt-6 flex gap-2">
+              {socials.map((s) => (
+                <a
+                  key={s.label}
+                  href="#"
+                  aria-label={s.label}
+                  className="size-10 rounded-full glass flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all hover:-translate-y-1"
+                >
+                  <SocialIcon d={s.d} />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <FooterCol className="lg:col-span-2" title="Company" items={["Home", "About Us", "Industries", "Why Choose Us", "Contact"]} />
+          <FooterCol className="lg:col-span-3" title="Services" items={["Real Estate", "BPO Services", "Call Centre", "Software Development", "Digital Marketing", "IT Services"]} />
+
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-semibold tracking-[0.2em] uppercase text-muted-foreground mb-5">Get in touch</h4>
+            <ul className="space-y-3 text-sm">
+              <li className="text-muted-foreground">New Delhi, India</li>
+              <li><a href="tel:+919876543210" className="hover:text-primary transition-colors">+91 98765 43210</a></li>
+              <li><a href="mailto:contact@assetlightsolutions.com" className="hover:text-primary transition-colors break-all">contact@assetlightsolutions.com</a></li>
+            </ul>
+            <a
+              href="#contact"
+              className="mt-6 group inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
+            >
+              Start a conversation <ArrowUpRight className="size-4 group-hover:rotate-45 transition-transform" />
+            </a>
+          </div>
+        </div>
+
+        <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
+          <div>© 2026 Asset Light Solutions International. All Rights Reserved.</div>
+          <div className="flex items-center gap-6">
+            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
+          </div>
+        </div>
       </div>
     </footer>
   );
 }
 
-function FooterCol({ title, items }: { title: string; items: string[] }) {
+function FooterCol({ title, items, className = "" }: { title: string; items: string[]; className?: string }) {
   return (
-    <div>
-      <h4 className="font-bold mb-5">{title}</h4>
-      <ul className="space-y-3 text-sm text-muted-foreground">
+    <div className={className}>
+      <h4 className="text-xs font-semibold tracking-[0.2em] uppercase text-muted-foreground mb-5">{title}</h4>
+      <ul className="space-y-3 text-sm">
         {items.map((it) => (
           <li key={it}>
-            <a href="#" className="hover:text-primary transition-colors">{it}</a>
+            <a href="#" className="text-foreground/80 hover:text-primary transition-colors inline-flex items-center gap-1 group">
+              <span className="size-1 rounded-full bg-primary/0 group-hover:bg-primary transition-colors" />
+              {it}
+            </a>
           </li>
         ))}
       </ul>

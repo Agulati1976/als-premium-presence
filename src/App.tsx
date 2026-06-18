@@ -1,16 +1,17 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/sections/Footer";
 import { CursorGlow } from "@/components/CursorGlow";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import Index from "@/pages/Index";
-import About from "@/pages/About";
-import Services from "@/pages/Services";
-import Industries from "@/pages/Industries";
-import WhyUs from "@/pages/WhyUs";
-import Contact from "@/pages/Contact";
-import NotFound from "@/pages/NotFound";
+
+const About = lazy(() => import("@/pages/About"));
+const Services = lazy(() => import("@/pages/Services"));
+const Industries = lazy(() => import("@/pages/Industries"));
+const WhyUs = lazy(() => import("@/pages/WhyUs"));
+const Contact = lazy(() => import("@/pages/Contact"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -28,15 +29,17 @@ export default function App() {
       <ScrollProgress />
       <Header />
       <main>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/industries" element={<Industries />} />
-          <Route path="/why-us" element={<WhyUs />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/industries" element={<Industries />} />
+            <Route path="/why-us" element={<WhyUs />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
     </div>

@@ -104,15 +104,13 @@ export function Industries() {
                     >
                       {item.name}
                     </div>
-                    {(featured || true) && (
-                      <p
-                        className={`mt-1.5 text-muted-foreground leading-snug ${
-                          featured ? "text-xs sm:text-sm line-clamp-2" : "text-[11px] sm:text-xs line-clamp-2 hidden sm:block"
-                        }`}
-                      >
-                        {item.blurb}
-                      </p>
-                    )}
+                    <p
+                      className={`mt-1.5 text-muted-foreground leading-snug ${
+                        featured ? "text-xs sm:text-sm line-clamp-2" : "text-[11px] sm:text-xs line-clamp-2"
+                      }`}
+                    >
+                      {item.blurb}
+                    </p>
                     <div className="mt-3 h-px w-8 bg-primary/40 group-hover:w-full group-hover:bg-primary transition-all duration-500" />
                   </div>
                 </div>

@@ -1,5 +1,5 @@
-import logoAsset from "@/assets/als-logo.png.asset.json";
+import logoAsset from "@/assets/als-logo-new.png.asset.json";
 
-export function Logo({ className = "h-10 w-auto" }: { className?: string }) {
+export function Logo({ className = "h-16 w-auto" }: { className?: string }) {
   return <img src={logoAsset.url} alt="Asset Light Solutions International" className={className} />;
 }

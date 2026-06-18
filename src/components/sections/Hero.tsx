@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Sparkles, ShieldCheck, Award } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/hero-premium.jpg";
 import { Counter } from "../Counter";
+import { useRef } from "react";
 
 const stats = [
   { value: 100, suffix: "+", label: "Projects Delivered" },

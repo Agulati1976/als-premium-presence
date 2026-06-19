@@ -37,7 +37,7 @@ export function CtaBanner() {
                 <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
-                href="tel:+919876543210"
+                href="tel:+919289975316"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-black/80 px-8 py-4 font-bold text-black hover:bg-black hover:text-primary transition-all"
               >
                 Call Sales

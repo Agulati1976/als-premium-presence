@@ -85,7 +85,7 @@ export function Hero() {
               <span className="relative inline-flex size-2 rounded-full bg-primary" />
             </span>
             <Sparkles className="size-3.5 text-primary" />
-            <span className="text-foreground/80">India's Trusted Business Solutions Partner</span>
+            <span className="text-foreground/80">India's Trusted Business Solutions Partner — Operating Globally</span>
           </motion.div>
 
           <h1 className="text-[2.5rem] sm:text-5xl lg:text-7xl xl:text-[5.5rem] font-extrabold leading-[0.98] tracking-[-0.03em]">

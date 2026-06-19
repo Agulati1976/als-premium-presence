@@ -15,9 +15,9 @@ export default function Index() {
     <>
       <Helmet>
         <title>Asset Light Solutions International | Real Estate, BPO & IT Services Company</title>
-        <meta name="description" content="Asset Light Solutions International provides Real Estate, Construction, Building Installation, BPO, Call Centre, Data Entry, Software Development, Digital Marketing and IT Services across India." />
+<meta name="description" content="Leading Real Estate, BPO & IT Solutions in India functioning globally." />
         <meta property="og:title" content="Asset Light Solutions International | Real Estate, BPO & IT Services" />
-        <meta property="og:description" content="Diversified business solutions across Real Estate, BPO, Call Centre, Software Development and Digital Marketing." />
+        <meta property="og:description" content="Leading Real Estate, BPO & IT Solutions in India functioning globally." />
       </Helmet>
       <Hero />
       <Marquee />

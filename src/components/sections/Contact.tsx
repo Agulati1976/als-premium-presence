@@ -91,8 +91,8 @@ export function Contact() {
             className="lg:col-span-2 space-y-4"
           >
             {[
-              { icon: Phone, label: "Call us", value: "+91 98765 43210", href: "tel:+919876543210", accent: "Mon–Sat, 9AM–7PM" },
-              { icon: MessageCircle, label: "WhatsApp", value: "Chat with our team", href: "https://wa.me/919876543210", accent: "Replies in minutes" },
+              { icon: Phone, label: "Call us", value: "+91 92899 75316", href: "tel:+919289975316", accent: "Mon–Sat, 9AM–7PM" },
+              { icon: MessageCircle, label: "WhatsApp", value: "Chat with our team", href: "https://wa.me/919289975316", accent: "Replies in minutes" },
               { icon: Mail, label: "Email us", value: "contact@assetlightsolutions.com", href: "mailto:contact@assetlightsolutions.com", accent: "24-hour response" },
               { icon: MapPin, label: "Visit office", value: "New Delhi, India", href: "#", accent: "Pan-India presence" },
             ].map((c) => (

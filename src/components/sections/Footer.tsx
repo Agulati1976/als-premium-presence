@@ -51,7 +51,7 @@ export function Footer() {
             <h4 className="text-xs font-semibold tracking-[0.2em] uppercase text-muted-foreground mb-5">Get in touch</h4>
             <ul className="space-y-3 text-sm">
               <li className="text-muted-foreground">New Delhi, India</li>
-              <li><a href="tel:+919876543210" className="hover:text-primary transition-colors">+91 98765 43210</a></li>
+              <li><a href="tel:+919289975316" className="hover:text-primary transition-colors">+91 92899 75316</a></li>
               <li><a href="mailto:contact@assetlightsolutions.com" className="hover:text-primary transition-colors break-all">contact@assetlightsolutions.com</a></li>
             </ul>
             <a

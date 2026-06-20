@@ -8,6 +8,7 @@ import Index from "@/pages/Index";
 
 const About = lazy(() => import("@/pages/About"));
 const Services = lazy(() => import("@/pages/Services"));
+const ServiceDetail = lazy(() => import("@/pages/ServiceDetail"));
 const Industries = lazy(() => import("@/pages/Industries"));
 const WhyUs = lazy(() => import("@/pages/WhyUs"));
 const Contact = lazy(() => import("@/pages/Contact"));
@@ -34,6 +35,7 @@ export default function App() {
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/:slug" element={<ServiceDetail />} />
             <Route path="/industries" element={<Industries />} />
             <Route path="/why-us" element={<WhyUs />} />
             <Route path="/contact" element={<Contact />} />

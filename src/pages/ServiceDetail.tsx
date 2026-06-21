@@ -5,6 +5,7 @@ import { Check, ArrowRight, Phone } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { getServiceBySlug, services } from "@/data/services";
+import { useEnquiry } from "@/contexts/EnquiryContext";
 
 export default function ServiceDetail() {
   const { slug } = useParams<{ slug: string }>();

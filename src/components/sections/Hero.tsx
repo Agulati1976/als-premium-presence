@@ -89,7 +89,7 @@ export function Hero() {
             <span className="text-foreground/80">India's Trusted Business Solutions Partner — Operating Globally</span>
           </motion.div>
 
-          <h1 className="text-[2.5rem] sm:text-5xl lg:text-7xl xl:text-[5.5rem] font-extrabold leading-[0.98] tracking-[-0.03em]">
+          <h1 className="text-[2.25rem] sm:text-[2.75rem] lg:text-6xl xl:text-[4.5rem] font-extrabold leading-[0.98] tracking-[-0.03em]">
             <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="block">
               Leading
             </motion.span>

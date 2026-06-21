@@ -40,7 +40,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    const FROM = 'Assetls International <onboarding@resend.dev>';
+    const FROM = 'Assetls International <noreply@assetlsinternational.com>';
     const TO_ADMIN = 'contact@assetlsinternational.com';
 
     const adminHtml = `

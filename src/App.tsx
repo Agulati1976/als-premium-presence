@@ -4,6 +4,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/sections/Footer";
 import { CursorGlow } from "@/components/CursorGlow";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { EnquiryProvider } from "@/contexts/EnquiryContext";
+import { EnquiryModal } from "@/components/EnquiryModal";
 import Index from "@/pages/Index";
 
 const About = lazy(() => import("@/pages/About"));

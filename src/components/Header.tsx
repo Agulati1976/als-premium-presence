@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NavLink, Link } from "react-router-dom";
 import { Logo } from "./Logo";
+import { useEnquiry } from "@/contexts/EnquiryContext";
 
 const navItems = [
   { label: "Home", to: "/" },

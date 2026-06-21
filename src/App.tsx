@@ -26,26 +26,29 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <ScrollToTop />
-      <CursorGlow />
-      <ScrollProgress />
-      <Header />
-      <main>
-        <Suspense fallback={<div className="min-h-screen" />}>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/services/:slug" element={<ServiceDetail />} />
-            <Route path="/industries" element={<Industries />} />
-            <Route path="/why-us" element={<WhyUs />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </main>
-      <Footer />
-    </div>
+    <EnquiryProvider>
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        <ScrollToTop />
+        <CursorGlow />
+        <ScrollProgress />
+        <Header />
+        <main>
+          <Suspense fallback={<div className="min-h-screen" />}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/services/:slug" element={<ServiceDetail />} />
+              <Route path="/industries" element={<Industries />} />
+              <Route path="/why-us" element={<WhyUs />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </main>
+        <Footer />
+        <EnquiryModal />
+      </div>
+    </EnquiryProvider>
   );
 }

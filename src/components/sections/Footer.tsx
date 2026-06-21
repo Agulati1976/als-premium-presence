@@ -88,3 +88,15 @@ function FooterCol({ title, items, className = "" }: { title: string; items: str
     </div>
   );
 }
+
+function StartConversationButton() {
+  const { openEnquiry } = useEnquiry();
+  return (
+    <button
+      onClick={openEnquiry}
+      className="mt-6 group inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
+    >
+      Start a conversation <ArrowUpRight className="size-4 group-hover:rotate-45 transition-transform" />
+    </button>
+  );
+}

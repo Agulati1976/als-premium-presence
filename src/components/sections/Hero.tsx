@@ -100,7 +100,7 @@ export function Hero() {
               <span className="text-gradient">& IT</span> Solutions
             </motion.span>
             <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }} className="block">
-              in India
+              in India <span className="text-gradient">— Functioning Globally</span>
             </motion.span>
           </h1>
 

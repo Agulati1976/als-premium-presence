@@ -183,3 +183,15 @@ export default function ServiceDetail() {
     </>
   );
 }
+
+function ProposalButton() {
+  const { openEnquiry } = useEnquiry();
+  return (
+    <button
+      onClick={openEnquiry}
+      className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold hover:opacity-90 transition"
+    >
+      Request a Proposal <ArrowRight className="size-4" />
+    </button>
+  );
+}

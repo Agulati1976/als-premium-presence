@@ -57,12 +57,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link
-            to="/contact"
-            className="hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold bg-primary text-primary-foreground hover:shadow-[0_0_30px_rgba(199,240,0,0.5)] transition-all hover:-translate-y-0.5"
-          >
-            Get Consultation
-          </Link>
+          <EnquiryButton />
           <button
             onClick={() => setOpen(!open)}
             className="lg:hidden p-2 rounded-md hover:bg-white/5"

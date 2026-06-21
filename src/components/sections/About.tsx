@@ -106,7 +106,7 @@ export function About() {
           <p className="mt-6 text-muted-foreground leading-relaxed">
             Asset Light Solutions International is a diversified business solutions company delivering
             innovative services across Real Estate, Construction, Building Installation, BPO, Call
-            Centre Operations, IT, Software Development and Digital Marketing.
+            Centre Operations, IT, Software Development and Digital Marketing — Since 2022.
           </p>
 
           {/* Highlights */}

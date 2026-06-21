@@ -3,6 +3,7 @@ import { ArrowRight, Sparkles, ShieldCheck, Award } from "lucide-react";
 import heroBg from "@/assets/hero-premium.webp";
 import { Counter } from "../Counter";
 import { useRef } from "react";
+import { useEnquiry } from "@/contexts/EnquiryContext";
 
 const stats = [
   { value: 100, suffix: "+", label: "Projects Delivered" },
@@ -99,7 +100,7 @@ export function Hero() {
               <span className="text-gradient">& IT</span> Solutions
             </motion.span>
             <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }} className="block">
-              in India
+              in India <span className="text-gradient">— Functioning Globally</span>
             </motion.span>
           </h1>
 
@@ -115,14 +116,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.85 }}
             className="mt-10 flex flex-wrap gap-4"
           >
-            <a
-              href="#contact"
-              className="group relative inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-bold text-primary-foreground transition-all hover:-translate-y-1 hover:shadow-[0_20px_60px_-10px_rgba(199,240,0,0.6)] overflow-hidden"
-            >
-              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700" />
-              <span className="relative">Request Consultation</span>
-              <ArrowRight className="size-4 relative group-hover:translate-x-1 transition-transform" />
-            </a>
+            <RequestConsultationButton />
             <a
               href="#services"
               className="group inline-flex items-center gap-2 rounded-full glass px-8 py-4 font-semibold hover:border-primary/50 hover:text-primary transition-all"
@@ -189,5 +183,19 @@ export function Hero() {
         <div className="w-px h-10 bg-gradient-to-b from-primary to-transparent" />
       </motion.div>
     </section>
+  );
+}
+
+function RequestConsultationButton() {
+  const { openEnquiry } = useEnquiry();
+  return (
+    <button
+      onClick={openEnquiry}
+      className="group relative inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-bold text-primary-foreground transition-all hover:-translate-y-1 hover:shadow-[0_20px_60px_-10px_rgba(199,240,0,0.6)] overflow-hidden"
+    >
+      <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700" />
+      <span className="relative">Request Consultation</span>
+      <ArrowRight className="size-4 relative group-hover:translate-x-1 transition-transform" />
+    </button>
   );
 }

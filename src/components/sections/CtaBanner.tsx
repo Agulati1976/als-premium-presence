@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useEnquiry } from "@/contexts/EnquiryContext";
 
 export function CtaBanner() {
+  const { openEnquiry } = useEnquiry();
   return (
     <section className="relative py-20">
       <div className="container mx-auto px-6">
@@ -29,13 +31,13 @@ export function CtaBanner() {
               </p>
             </div>
             <div className="flex flex-wrap gap-4 lg:justify-end">
-              <a
-                href="#contact"
+              <button
+                onClick={openEnquiry}
                 className="group inline-flex items-center gap-2 rounded-full bg-black px-8 py-4 font-bold text-primary hover:bg-neutral-900 transition-all hover:-translate-y-1"
               >
                 Start a Project
                 <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </button>
               <a
                 href="tel:+919289975316"
                 className="inline-flex items-center gap-2 rounded-full border-2 border-black/80 px-8 py-4 font-bold text-black hover:bg-black hover:text-primary transition-all"

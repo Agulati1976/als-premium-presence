@@ -5,6 +5,7 @@ import { Check, ArrowRight, Phone } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { getServiceBySlug, services } from "@/data/services";
+import { useEnquiry } from "@/contexts/EnquiryContext";
 
 export default function ServiceDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -74,12 +75,7 @@ export default function ServiceDetail() {
             </ul>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold hover:opacity-90 transition"
-              >
-                Request a Proposal <ArrowRight className="size-4" />
-              </Link>
+              <ProposalButton />
               <a
                 href="tel:+919289975316"
                 className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-semibold hover:border-primary/50 transition"
@@ -185,5 +181,17 @@ export default function ServiceDetail() {
 
       <CtaBanner />
     </>
+  );
+}
+
+function ProposalButton() {
+  const { openEnquiry } = useEnquiry();
+  return (
+    <button
+      onClick={openEnquiry}
+      className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3 text-sm font-semibold hover:opacity-90 transition"
+    >
+      Request a Proposal <ArrowRight className="size-4" />
+    </button>
   );
 }

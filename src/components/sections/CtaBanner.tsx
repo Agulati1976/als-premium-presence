@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useEnquiry } from "@/contexts/EnquiryContext";
 
 export function CtaBanner() {
+  const { openEnquiry } = useEnquiry();
   return (
     <section className="relative py-20">
       <div className="container mx-auto px-6">

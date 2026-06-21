@@ -1,19 +1,50 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, CheckCircle2 } from "lucide-react";
+import { X, Send, CheckCircle2, Loader2 } from "lucide-react";
 import { useEnquiry } from "@/contexts/EnquiryContext";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 export function EnquiryModal() {
   const { isOpen, closeEnquiry } = useEnquiry();
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => {
-      setSent(false);
-      closeEnquiry();
-    }, 2500);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      name: String(fd.get("name") || "").trim(),
+      company: String(fd.get("company") || "").trim(),
+      phone: String(fd.get("phone") || "").trim(),
+      email: String(fd.get("email") || "").trim(),
+      service: String(fd.get("service") || "").trim(),
+      message: String(fd.get("message") || "").trim(),
+    };
+
+    if (!payload.name || !payload.phone || !payload.email || !payload.message) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const { error } = await supabase.functions.invoke("send-enquiry", { body: payload });
+      if (error) throw error;
+      setSent(true);
+      form.reset();
+      toast.success("Enquiry sent! Check your inbox for confirmation.");
+      setTimeout(() => {
+        setSent(false);
+        closeEnquiry();
+      }, 2500);
+    } catch (err) {
+      console.error(err);
+      toast.error("Could not send enquiry. Please try again or call us.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -63,7 +94,11 @@ export function EnquiryModal() {
                 <label className="text-xs font-semibold text-muted-foreground mb-2 block uppercase tracking-wider">
                   Service Required
                 </label>
-                <select className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all">
+                <select
+                  name="service"
+                  defaultValue="Real Estate Services"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-foreground focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
+                >
                   <option className="bg-background">Real Estate Services</option>
                   <option className="bg-background">BPO / Call Centre</option>
                   <option className="bg-background">Software Development</option>
@@ -77,21 +112,29 @@ export function EnquiryModal() {
                   How can we help?
                 </label>
                 <textarea
+                  name="message"
                   rows={4}
                   required
+                  maxLength={2000}
                   placeholder="Tell us about your project..."
                   className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
                 />
               </div>
               <button
                 type="submit"
-                className="group relative w-full inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 font-bold text-primary-foreground hover:shadow-[0_20px_60px_-10px_rgba(199,240,0,0.6)] transition-all hover:-translate-y-0.5 overflow-hidden"
+                disabled={loading || sent}
+                className="group relative w-full inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 font-bold text-primary-foreground hover:shadow-[0_20px_60px_-10px_rgba(199,240,0,0.6)] transition-all hover:-translate-y-0.5 overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700" />
                 {sent ? (
                   <>
                     <CheckCircle2 className="size-5 relative" />
                     <span className="relative">Thank you — we&apos;ll be in touch</span>
+                  </>
+                ) : loading ? (
+                  <>
+                    <Loader2 className="size-4 relative animate-spin" />
+                    <span className="relative">Sending…</span>
                   </>
                 ) : (
                   <>

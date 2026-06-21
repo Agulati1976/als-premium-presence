@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { Logo } from "../Logo";
+import { useEnquiry } from "@/contexts/EnquiryContext";
 
 const SocialIcon = ({ d }: { d: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="size-4"><path d={d} /></svg>

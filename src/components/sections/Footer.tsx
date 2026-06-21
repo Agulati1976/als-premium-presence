@@ -55,12 +55,7 @@ export function Footer() {
               <li><a href="tel:+919289975316" className="hover:text-primary transition-colors">+91 92899 75316</a></li>
               <li><a href="mailto:contact@assetlightsolutions.com" className="hover:text-primary transition-colors break-all">contact@assetlightsolutions.com</a></li>
             </ul>
-            <a
-              href="#contact"
-              className="mt-6 group inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
-            >
-              Start a conversation <ArrowUpRight className="size-4 group-hover:rotate-45 transition-transform" />
-            </a>
+            <StartConversationButton />
           </div>
         </div>
 

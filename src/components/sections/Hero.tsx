@@ -3,6 +3,7 @@ import { ArrowRight, Sparkles, ShieldCheck, Award } from "lucide-react";
 import heroBg from "@/assets/hero-premium.webp";
 import { Counter } from "../Counter";
 import { useRef } from "react";
+import { useEnquiry } from "@/contexts/EnquiryContext";
 
 const stats = [
   { value: 100, suffix: "+", label: "Projects Delivered" },

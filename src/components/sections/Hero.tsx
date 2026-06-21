@@ -185,3 +185,17 @@ export function Hero() {
     </section>
   );
 }
+
+function RequestConsultationButton() {
+  const { openEnquiry } = useEnquiry();
+  return (
+    <button
+      onClick={openEnquiry}
+      className="group relative inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-bold text-primary-foreground transition-all hover:-translate-y-1 hover:shadow-[0_20px_60px_-10px_rgba(199,240,0,0.6)] overflow-hidden"
+    >
+      <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:translate-x-full transition-transform duration-700" />
+      <span className="relative">Request Consultation</span>
+      <ArrowRight className="size-4 relative group-hover:translate-x-1 transition-transform" />
+    </button>
+  );
+}
